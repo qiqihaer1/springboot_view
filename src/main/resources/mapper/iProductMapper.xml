@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace名称与mapper接口全路径一致-->
+<mapper namespace="com.junrui.mapper.iProductMapper">
+    <!--type名称与entity实体类全路径一致-->
+    <resultMap id="ProductC" type="com.junrui.entity.Product">
+        <result column="product_id" property="productId"/>
+        <result column="product_name" property="productName"/>
+        <result column="extend_info" property="extendInfo"/>
+    </resultMap>
+    <resultMap id="ProductD" type="com.junrui.entity.ProductClick">
+        <result column="product_name" property="productName"/>
+        <result column="product_click" property="productClick"/>
+    </resultMap>
+
+    <!--id=名称与mapper接口当中的方法名一致-->
+    <select id="selectAllProduct" resultMap="ProductC">
+        SELECT * FROM `t_product`
+    </select>
+    <select id="selectProductClick" resultMap="ProductD">
+        SELECT product_name,product_click FROM `t_product_click`
+    </select>
+
+</mapper>
